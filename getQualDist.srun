@@ -1,0 +1,13 @@
+#!/bin/bash
+#SBATCH --partition=short
+#SBATCH --job-name=GetQualDist
+#SBATCH --time=0-08:00:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+module purge
+module load prl
+module load python/3.6.0
+/usr/bin/time -v python3 getQualDist.py -r 363246735 -f '/projects/bgmp/shared/2017_sequencing/1294_S1_L008_R1_001.fastq.gz' -l 101 -t 'Read 1 Quality'
+/usr/bin/time -v python3 getQualDist.py -r 363246735 -f '/projects/bgmp/shared/2017_sequencing/1294_S1_L008_R4_001.fastq.gz' -l 101 -t 'Read 2 Quality'
+/usr/bin/time -v python3 getQualDist.py -r 363246735 -f '/projects/bgmp/shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz' -l 8 -t 'Index 1 Quality'
+/usr/bin/time -v python3 getQualDist.py -r 363246735 -f '/projects/bgmp/shared/2017_sequencing/1294_S1_L008_R3_001.fastq.gz' -l 8 -t 'Index 2 Quality'
