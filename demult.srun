@@ -1,0 +1,14 @@
+#!/bin/bash
+#SBATCH --partition=short
+#SBATCH --job-name=demult
+#SBATCH --time=0-00:02:00
+#SBATCH --nodes=1
+#SBATCH --ntasks-per-node=1
+module purge
+module load prl
+module load python/3.6.0
+/usr/bin/time -v python3 newDemult.py -i1 '../../shared/2017_sequencing/1294_S1_L008_R2_001.fastq.gz' \
+-i2 '../../shared/2017_sequencing/1294_S1_L008_R3_001.fastq.gz' \
+-r1 '../../shared/2017_sequencing/1294_S1_L008_R1_001.fastq.gz' \
+-r2 '../../shared/2017_sequencing/1294_S1_L008_R4_001.fastq.gz' \
+-ix 'indexes.tsv' \
